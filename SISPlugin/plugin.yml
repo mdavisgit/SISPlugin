@@ -1,0 +1,29 @@
+#name, main, version and api are required
+name: SISPlugin
+main: SISPlugin\Main
+version: 0.0.1
+api: [1.0.0]
+
+load: POSTWORLD
+author: Daviskingdom
+description: SIS's Plugin
+website: https://github.com/mdavisgit/SISPlugin.git
+commands:
+ hi:
+  description: Hi command
+  usage: "Usage: /hi"
+  permission: SydneyPlugin.command.hi
+ tst:
+  description: Test command
+  usage: "Usage: /tst"
+  permission: SydneyPlugin.command.tst
+ soo:
+  description: Say hi to Sydney command
+  usage: "Usage: /soo"  
+permissions:
+ SydneyPlugin.command.hi:
+  description: "Allows the user to run the hi command"
+  default: true
+ SydneyPlugin.command.tst:
+  description: "Allows the user to run the tst command"
+  default: true
