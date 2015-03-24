@@ -112,13 +112,13 @@ class Main extends PluginBase implements Listener {
 	/**
 	 * @param PlayerJoinEvent $PJE
 	 */
-	public function playerJoin(PlayerJoinEvent $PJE) {
+	public function onJoin(PlayerJoinEvent $PJE) {
 		// Format for function is "public function <anyName>(<EventNameFromDocumentation> <anyVariableName>) {
 		global $playersOnline;
 		$this->messageToAll ( "onJoin!" );
 		$player = $PJE->getPlayer ();
 		$name = $player->getDisplayName ();
-		$this->getServer ()->broadcastMessage ( "Howdy " . $name . " [DEFAULT] joined the game!!" . time () );
+		$this->getServer ()->broadcastMessage ( "Howdy " . $name . " [DEFAULT] joined the game!!");
 		
 		$playersOnline [$name] = time ();
 		$playersOnline [$name] = time ();
@@ -138,9 +138,7 @@ class Main extends PluginBase implements Listener {
 		$this->messageToAll ( "bye bye" );
 		$player = $PQE->getPlayer ();
 		$name = $player->getDisplayName ();
-		$this->messageToAll ( print_r ( $playersOnline ) );
 		unset ( $playersOnline [$name] );
-		$this->messageToAll ( print_r ( $playersOnline ) );
 	}
 	
 		
@@ -186,14 +184,15 @@ class Main extends PluginBase implements Listener {
 	public function checkPlayerOnlineTime($p, $name) {
 		global $playersOnline;
 		$timeOnline = time () - $playersOnline [$name];
-		if (($timeOnline >= STAGE1_MIN) and ($timeOnline <= STAGE1_MAX)) {
+		$tenSeconds = $timeOnline % 10;		
+		if (($timeOnline >= STAGE1_MIN) and ($timeOnline <= STAGE1_MAX) and $tenSeconds == 0) {
 			$p->sendMessage ( "You have been playing for " . $timeOnline . " seconds." );
-			$p->sendMessage ( "Take a break and eat a cookie" );
+			$p->sendMessage ( "Take a break and eat a cookie" );			
 		} elseif (($timeOnline >= STAGE2_MIN) and ($timeOnline <= STAGE2_MAX)) {
 			
 			$p->sendMessage ( "You have been playing for " . $timeOnline . " seconds." );
 			$p->sendMessage ( "Take a break and eat a cookie" );
-			$p->sendMessage ( "You will be kicked from the server if you do not" );
+			$p->sendMessage ( "You will be KICKED if you do not" );
 		} elseif (($timeOnline > STAGE3_MIN)) {
 			
 			$p->kick ( "Take a break!" );
