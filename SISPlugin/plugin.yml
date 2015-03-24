@@ -12,18 +12,18 @@ commands:
  hi:
   description: Hi command
   usage: "Usage: /hi"
-  permission: SydneyPlugin.command.hi
+  permission: SISPlugin.command.hi
  tst:
   description: Test command
   usage: "Usage: /tst"
-  permission: SydneyPlugin.command.tst
- soo:
-  description: Say hi to Sydney command
-  usage: "Usage: /soo"  
+  permission: SISPlugin.command.tst
+ sis:
+  description: Say hi to SIS command
+  usage: "Usage: /sis"  
 permissions:
- SydneyPlugin.command.hi:
+ SISPlugin.command.hi:
   description: "Allows the user to run the hi command"
   default: true
- SydneyPlugin.command.tst:
+ SISPlugin.command.tst:
   description: "Allows the user to run the tst command"
   default: true
