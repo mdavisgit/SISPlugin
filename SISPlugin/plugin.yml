@@ -1,4 +1,4 @@
-#name, main, version and api are required
+#name, main, version and api are required #
 name: SISPlugin
 main: SISPlugin\Main
 version: 0.0.1
